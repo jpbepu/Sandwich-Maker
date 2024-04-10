@@ -84,7 +84,7 @@ function createIngredient(name){
     newIngredient.style.position = 'absolute';
     newIngredient.style.maxBlockSize = '300px';
 
-    newIngredient.src = name + ".png";
+    newIngredient.src = `./imgs/${name}.png`;
 
 
 

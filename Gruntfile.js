@@ -4,18 +4,18 @@ module.exports = function(grunt) {
     grunt.initConfig({
 
         less: {
-            development: {
+            dev: {
                 files: {
                     'build/style.css' : 'src/style.less'
                 }
             },
 
-            production:{
+            dist:{
                 options:{
                     compress: true
                 },
                 files: {
-                    'build/main.min.css' : 'src/main.less'
+                    'build/style.min.css' : 'src/style.less'
                 }
             }
         },
@@ -24,9 +24,9 @@ module.exports = function(grunt) {
         uglify:{
             target:{
                 files:{
-                    'build/app.min.js' : 'src/app.js'
+                    'build/appmin.js' : 'src/app.js'
                 }
-            }
+            },
         },
         
 
@@ -46,6 +46,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
 
-    grunt.registerTask('default', ['copy', 'less', 'uglify']);
+    grunt.registerTask('default', ['copy', 'less:dev', 'uglify']);
   
   };
