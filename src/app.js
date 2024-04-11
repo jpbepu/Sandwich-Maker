@@ -1,107 +1,51 @@
-//food buttons
-const bunBtn = document.getElementById('bun');
-const pattyBtn = document.getElementById('patty');
-const cheeseBtn = document.getElementById('cheese');
-const baconBtn = document.getElementById('bacon');
-const lettuceBtn = document.getElementById('lettuce');
-const onionBtn = document.getElementById('onion');
-const tomatoBtn = document.getElementById('tomato');
-const picklesBtn = document.getElementById('pickles');
-
-const startOverBtn = document.getElementById('start-over');
-
-
-//ingredient placement
-
-var ingredientIndex = 40
-
 
 //food container
-var foodContainer = document.getElementById('food-container');
+const foodContainer = document.getElementById('food-container');
 
-
-bunBtn.addEventListener('click', () => {
-
-    createIngredient('bun');
-    
+//reset btn
+document.getElementById('start-over').addEventListener('click', () => {
+    location.reload();
 })
 
-pattyBtn.addEventListener('click', () => {
-    createIngredient('patty');
-    
-})
+//ingredient position distance
+let ingredientIndex = 40
 
-cheeseBtn.addEventListener('click', () => {
-
-    createIngredient('cheese');
-    
-})
-
-baconBtn.addEventListener('click', () => {
-
-    createIngredient('bacon');
-    
-})
-
-lettuceBtn.addEventListener('click', () => {
-
-    createIngredient('lettuce');
-    
-})
-
-onionBtn.addEventListener('click', () => {
-
-    createIngredient('onion');
-    
-})
-
-tomatoBtn.addEventListener('click', () => {
-
-    createIngredient('tomato');
-    
-})
-
-picklesBtn.addEventListener('click', () => {
-
-    createIngredient('pickles');
-    
-})
-
-startOverBtn.addEventListener('click', () => {
-
-    reload();
-    
-})
+//ingredients array
+const ingredients = [
+                    'bun',
+                    'patty',
+                    'cheese',
+                    'bacon',
+                    'lettuce',
+                    'onion',
+                    'tomato',
+                    'pickles'
+                    ];
 
 
-
-function createIngredient(name){
-
-    console.log(name);
-    var newIngredient = document.createElement('img');
-    
-
-    newIngredient.style.position = 'absolute';
-    newIngredient.style.maxBlockSize = '300px';
-
-    newIngredient.src = `./imgs/${name}.png`;
-
-
-
-    foodContainer.appendChild(newIngredient);
-    
-    newIngredient.style.bottom = ingredientIndex + 'px';
-    console.log(newIngredient.style.bottom)
-
-    
-    ingredientIndex = ingredientIndex + 40;
-
+//loop that assigns imgs and behaviour to buttons
+for (let i = 0; i < ingredients.length; i++) {
+    let ingredient = ingredients[i];
+    document.getElementById(ingredient).addEventListener('click', () => {
+        createIngredient(ingredient);
+        
+    })
 }
 
 
+//adds ingredients nodes to DOM
+function createIngredient(name){
 
-function reload(){
+    console.log(name);
+    const newIngredient = document.createElement('img');
+    
+    newIngredient.style.position = 'absolute';
+    newIngredient.style.maxBlockSize = '300px';
+    newIngredient.src = `./imgs/${name}.png`;
+    newIngredient.style.bottom = ingredientIndex + 'px';
 
-    location.reload()
+    foodContainer.appendChild(newIngredient);
+    
+    ingredientIndex += 40;
 
 }
