@@ -28,7 +28,6 @@ for (let i = 0; i < ingredients.length; i++) {
     let ingredient = ingredients[i];
     document.getElementById(ingredient).addEventListener('click', () => {
         createIngredient(ingredient);
-        
     })
 }
 

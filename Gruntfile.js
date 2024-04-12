@@ -33,7 +33,8 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files:{
-                    './build/index.html' : './src/index.html'
+                    './build/index.html' : './src/index.html',
+                    './build/imgs/' : './src/imgs/*'
                 }
             }
         },
