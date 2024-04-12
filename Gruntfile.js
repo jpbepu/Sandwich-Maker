@@ -32,10 +32,15 @@ module.exports = function(grunt) {
 
         copy: {
             main: {
-                files:{
+                files:[{
                     './build/index.html' : './src/index.html',
-                    './build/imgs/' : './src/imgs/*'
-                }
+                },
+                {
+                    expand: true,
+                    cwd: 'src/imgs/', 
+                    src: ['**/*.{png,jpg,svg}'], 
+                    dest:'build/imgs/'
+                }]
             }
         },
 
@@ -47,6 +52,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
 
-    grunt.registerTask('default', ['copy', 'less:dev', 'uglify']);
+    grunt.registerTask('default', ['copy', 'less:dist', 'uglify']);
   
   };
